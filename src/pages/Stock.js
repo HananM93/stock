@@ -24,14 +24,14 @@ useEffect(() =>{
 const loaded = () => {
   return (
     <div className="stock">
-      <h1>Name: {symbol}</h1>
-      <h2>Price: ${stock[0].price}</h2>
+      <h2>Name: {symbol}</h2>
+      <h3>Price: ${stock[0].price}</h3>
     </div>
   )
 }
 
 const loading = () => {
-  return <h1>Loading...</h1>
+  return <h1 className="loading">Loading...</h1>
 }
 
 return stock ? loaded() : loading()
