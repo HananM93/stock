@@ -1,0 +1,41 @@
+import React from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+
+function Stock () {
+  const apiKey = 'e5a48b4ab836c106d646a17d66446f34'
+
+  const params = useParams()
+  const symbol = params.symbol
+  const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=e5a48b4ab836c106d646a17d66446f34`
+
+const [stock, setStock] = useState(null)
+
+const getStock = async () => {
+  const response = await fetch(url)
+  const data = await response.json()
+  setStock(data)
+}
+
+useEffect(() =>{
+  getStock()
+}, [])
+
+const loaded = () => {
+  return (
+    <div className="stock">
+      <h1>Name: {symbol}</h1>
+      <h2>Price: ${stock[0].price}</h2>
+    </div>
+  )
+}
+
+const loading = () => {
+  return <h1>Loading...</h1>
+}
+
+return stock ? loaded() : loading()
+}
+
+export default Stock
+
