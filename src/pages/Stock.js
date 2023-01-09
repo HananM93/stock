@@ -31,7 +31,7 @@ const loaded = () => {
 }
 
 const loading = () => {
-  return <h1 className="loading">Loading...</h1>
+  return <i class="fa fa-spinner fa-spin" style={{ fontSize:"24px", textAlign: "center", display: 'block'}}></i>
 }
 
 return stock ? loaded() : loading()
